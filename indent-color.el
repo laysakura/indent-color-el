@@ -23,18 +23,23 @@
 ;; http://www.moongift.jp/2013/04/20130418/
 
 ;;; Code:
-(defface my-face-b-01 '((t (:background "#eebbbb"))) nil)
-(defface my-face-b-02 '((t (:background "#bbeebb"))) nil)
-(defface my-face-b-03 '((t (:background "#bbbbee"))) nil)
-(defface my-face-b-04 '((t (:background "#ebbbbe"))) nil)
-(defface my-face-b-05 '((t (:background "#bbbeeb"))) nil)
-(defface my-face-b-06 '((t (:background "#ffdead"))) nil)
-(defface my-face-b-07 '((t (:background "#beafff"))) nil)
-(defface my-face-b-08 '((t (:background "LightPink"))) nil)
-(defface my-face-b-09 '((t (:background "CadetBlue1"))) nil)
-(defface my-face-b-10 '((t (:background "LightGoldenrod"))) nil)
-(defface my-face-b-11 '((t (:background "MediumOrchid1"))) nil)
-(defface my-face-b-12 '((t (:background "orange1"))) nil)
+
+(defvar indent-color--one-indent
+  "  "
+  "String used for one indent.")
+
+(defface my-face-b-01 '((t (:foreground "#eebbbb" :underline t))) nil)
+(defface my-face-b-02 '((t (:foreground "#bbeebb" :underline t))) nil)
+(defface my-face-b-03 '((t (:foreground "#bbbbee" :underline t))) nil)
+(defface my-face-b-04 '((t (:foreground "#ebbbbe" :underline t))) nil)
+(defface my-face-b-05 '((t (:foreground "#bbbeeb" :underline t))) nil)
+(defface my-face-b-06 '((t (:foreground "#ffdead" :underline t))) nil)
+(defface my-face-b-07 '((t (:foreground "#beafff" :underline t))) nil)
+(defface my-face-b-08 '((t (:foreground "LightPink" :underline t))) nil)
+(defface my-face-b-09 '((t (:foreground "CadetBlue1" :underline t))) nil)
+(defface my-face-b-10 '((t (:foreground "LightGoldenrod" :underline t))) nil)
+(defface my-face-b-11 '((t (:foreground "MediumOrchid1" :underline t))) nil)
+(defface my-face-b-12 '((t (:foreground "orange1" :underline t))) nil)
 (defvar my-face-b-01 'my-face-b-01)
 (defvar my-face-b-02 'my-face-b-02)
 (defvar my-face-b-03 'my-face-b-03)
@@ -47,22 +52,59 @@
 (defvar my-face-b-10 'my-face-b-10)
 (defvar my-face-b-11 'my-face-b-11)
 (defvar my-face-b-12 'my-face-b-12)
+
 (defadvice font-lock-mode (before my-font-lock-mode ())
   (font-lock-add-keywords
    major-mode
-   '(
-     ("^                        " 0 my-face-b-12 append)
-     ("^                      " 0 my-face-b-11 append)
-     ("^                    " 0 my-face-b-10 append)
-     ("^                  " 0 my-face-b-09 append)
-     ("^                " 0 my-face-b-08 append)
-     ("^              " 0 my-face-b-07 append)
-     ("^            " 0 my-face-b-06 append)
-     ("^          " 0 my-face-b-05 append)
-     ("^        " 0 my-face-b-04 append)
-     ("^      " 0 my-face-b-03 append)
-     ("^    " 0 my-face-b-02 append)
-     ("^  " 0 my-face-b-01 append)
+   `(
+     (,(apply 'concat
+              "^"
+              (make-list 12 indent-color--one-indent))
+      0 my-face-b-12 append)
+     (,(apply 'concat
+              "^"
+              (make-list 11 indent-color--one-indent))
+      0 my-face-b-11 append)
+     (,(apply 'concat
+              "^"
+              (make-list 10 indent-color--one-indent))
+      0 my-face-b-10 append)
+     (,(apply 'concat
+              "^"
+              (make-list 9 indent-color--one-indent))
+      0 my-face-b-09 append)
+     (,(apply 'concat
+              "^"
+              (make-list 8 indent-color--one-indent))
+      0 my-face-b-08 append)
+     (,(apply 'concat
+              "^"
+              (make-list 7 indent-color--one-indent))
+      0 my-face-b-07 append)
+     (,(apply 'concat
+              "^"
+              (make-list 6 indent-color--one-indent))
+      0 my-face-b-06 append)
+     (,(apply 'concat
+              "^"
+              (make-list 5 indent-color--one-indent))
+      0 my-face-b-05 append)
+     (,(apply 'concat
+              "^"
+              (make-list 4 indent-color--one-indent))
+      0 my-face-b-04 append)
+     (,(apply 'concat
+              "^"
+              (make-list 3 indent-color--one-indent))
+      0 my-face-b-03 append)
+     (,(apply 'concat
+              "^"
+              (make-list 2 indent-color--one-indent))
+      0 my-face-b-02 append)
+     (,(apply 'concat
+              "^"
+              (make-list 1 indent-color--one-indent))
+      0 my-face-b-01 append)
      )))
 (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
 (ad-activate 'font-lock-mode)
