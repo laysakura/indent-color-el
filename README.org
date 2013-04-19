@@ -1,0 +1,7 @@
+* indent-color.el
+  /indent-color.el/ sets color for each indented line.
+
+  [[http://github.com/laysakura/indent-color-el/raw/master/doc/screenshot.png]]
+
+* Usage
+  Copy-and-paste /indent-color.el/ onto your /init.el/ .
